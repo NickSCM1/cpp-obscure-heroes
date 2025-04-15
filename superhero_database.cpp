@@ -1,3 +1,10 @@
+//****************************************************** 
+// Author:      Nickolas Marino
+// Asignment:   Obscure Heros Database
+// Description: A modifiable database of superheros
+//             
+//******************************************************
+
 #include <iostream>
 #include <string>
 #include <vector>
