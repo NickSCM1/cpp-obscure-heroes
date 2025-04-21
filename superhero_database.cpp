@@ -11,11 +11,10 @@
 #include <algorithm>
 #include <cctype>
 #include <fstream>
-#include <limits> // Required for numeric_limits
+#include <limits> 
 
 using namespace std;
 
-// Function to convert a string to uppercase
 string toUpper(string str) {
     string result = "";
     for (char c : str) {
@@ -24,7 +23,6 @@ string toUpper(string str) {
     return result;
 }
 
-// Function to convert a string to lowercase
 string toLower(string str) {
     string result = "";
     for (char c : str) {
@@ -33,7 +31,6 @@ string toLower(string str) {
     return result;
 }
 
-// Function to display all superheroes
 void displaySuperheroes(const vector<string>& names, const vector<string>& superpowers,
                         const vector<string>& weaknesses, const vector<int>& years,
                         const vector<string>& universes, bool uppercase) {
@@ -66,7 +63,6 @@ void displaySuperheroes(const vector<string>& names, const vector<string>& super
     cout << endl;
 }
 
-// Function to search for a superhero by name (case-insensitive)
 void searchByName(const vector<string>& names, const vector<string>& superpowers,
                   const vector<string>& weaknesses, const vector<int>& years,
                   const vector<string>& universes, const string& searchName) {
@@ -116,7 +112,6 @@ void findBySuperpower(const vector<string>& names, const vector<string>& superpo
     }
 }
 
-// Function to sort superheroes alphabetically by name
 void sortAlphabetically(vector<string>& names, vector<string>& superpowers,
                         vector<string>& weaknesses, vector<int>& years,
                         vector<string>& universes) {
@@ -129,14 +124,12 @@ void sortAlphabetically(vector<string>& names, vector<string>& superpowers,
         return names[a] < names[b];
     });
 
-    // Create temporary vectors to store the sorted data
     vector<string> sortedNames(names.size());
     vector<string> sortedSuperpowers(superpowers.size());
     vector<string> sortedWeaknesses(weaknesses.size());
     vector<int> sortedYears(years.size());
     vector<string> sortedUniverses(universes.size());
 
-    // Populate the sorted vectors
     for (size_t i = 0; i < names.size(); ++i) {
         sortedNames[i] = names[indices[i]];
         sortedSuperpowers[i] = superpowers[indices[i]];
@@ -145,7 +138,6 @@ void sortAlphabetically(vector<string>& names, vector<string>& superpowers,
         sortedUniverses[i] = universes[indices[i]];
     }
 
-    // Copy the sorted data back to the original arrays
     names = sortedNames;
     superpowers = sortedSuperpowers;
     weaknesses = sortedWeaknesses;
@@ -155,7 +147,6 @@ void sortAlphabetically(vector<string>& names, vector<string>& superpowers,
     cout << "Superheroes sorted alphabetically." << endl;
 }
 
-// Function to add a new superhero
 void addSuperhero(vector<string>& names, vector<string>& superpowers,
                    vector<string>& weaknesses, vector<int>& years,
                    vector<string>& universes) {
@@ -178,7 +169,6 @@ void addSuperhero(vector<string>& names, vector<string>& superpowers,
     cout << "Enter the comic universe (Marvel, DC, or Other): ";
     getline(cin, universe);
 
-    // Add the new superhero's data
     names.push_back(name);
     superpowers.push_back(superpower);
     weaknesses.push_back(weakness);
@@ -188,7 +178,6 @@ void addSuperhero(vector<string>& names, vector<string>& superpowers,
     cout << "Superhero '" << name << "' added successfully!" << endl;
 }
 
-// Function to load superhero data from file
 bool loadSuperheroData(vector<string>& names, vector<string>& superpowers,
                        vector<string>& weaknesses, vector<int>& years,
                        vector<string>& universes, const string& filename) {
@@ -222,7 +211,6 @@ bool loadSuperheroData(vector<string>& names, vector<string>& superpowers,
     return true;
 }
 
-// Function to save superhero data to file
 bool saveSuperheroData(const vector<string>& names, const vector<string>& superpowers,
                        const vector<string>& weaknesses, const vector<int>& years,
                        const vector<string>& universes, const string& filename) {
@@ -245,7 +233,6 @@ bool saveSuperheroData(const vector<string>& names, const vector<string>& superp
     return true;
 }
 
-// Function to clear the input buffer
 void clearInputBuffer() {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
@@ -321,7 +308,6 @@ int main() {
             cout << "Invalid choice. Please try again." << endl;
     }
 
-    // Save data after each modification
     if (choice >= 4 && choice <= 7) {
         if (!saveSuperheroData(names, superpowers, weaknesses, years, universes, dataFilename)) {
             cout << "Error saving data to file!" << endl;
